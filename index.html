@@ -1,26 +1,191 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Portfolio</title>
+    <title>Muzaffer A. Khan | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: #1e293b;
+        }
+
+        .profile {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid #38bdf8;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #38bdf8;
+        }
+
+        .typing {
+            color: #38bdf8;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #38bdf8;
+            margin-bottom: 15px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .social a {
+            margin: 0 10px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .social a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1e293b;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>Muzaffer Ali Khan</h1>
-    <p>B.Sc IT Student | Future Officer</p>
+<header>
+    <img src="picture.jpg" class="profile">
+    <h1>Muzaffer A. Khan</h1>
 
+    <!-- Typing text -->
+    <p class="typing" id="typing"></p>
+
+    <!-- Social Links -->
+    <div class="social">
+        <a href="instagram.com/_withmuxaffer">Instagram</a>
+        <a href="https://github.com/muxaffer786">GitHub</a>
+    </div>
+</header>
+
+<section>
     <h2>About Me</h2>
-    <p>I am learning web development and preparing for CAPF AC.</p>
+    <div class="card">
+        <p>I am a B.Sc IT student from Srinagar.
+        <p>I am learning web development and preparing for CAPF.</p> 
+        <p>I focus on discipline and building real skills.</p>
+    </div>
+</section>
 
+<section>
     <h2>Skills</h2>
-    <ul>
-        <li>Learning Web Development</li>
-        <li>Learning HTML Code</li>
-        <li>Learning CSS</li>
-    </ul>
+    <div class="card">
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript (Learning)</li>
+        </ul>
+    </div>
+</section>
 
-    <h2>Contact</h2>
-    <p>Phone: +91 9541398720</p>
-    <p>Email: muzafferkhan2023@email.com</p>
+<section>
+    <h2>Projects</h2>
+    <div class="projects">
+        <div class="card">
+            <h3>Portfolio Website</h3>
+            <p>My personal website hosted online.</p>
+        </div>
+
+        <div class="card">
+            <h3>Coming Soon</h3>
+            <p>More projects will be added.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Muzaffer A. Khan</p>
+</footer>
+
+<!-- Typing Animation Script -->
+<script>
+    const text = ["B.Sc IT Student", "Web Developer (Learning)", "Future CAPF Officer"];
+    let i = 0;
+    let j = 0;
+    let currentText = "";
+    let isDeleting = false;
+
+    function type() {
+        currentText = text[i];
+
+        if (!isDeleting) {
+            document.getElementById("typing").innerHTML = currentText.substring(0, j++);
+            if (j > currentText.length) {
+                isDeleting = true;
+                setTimeout(type, 1000);
+                return;
+            }
+        } else {
+            document.getElementById("typing").innerHTML = currentText.substring(0, j--);
+            if (j < 0) {
+                isDeleting = false;
+                i = (i + 1) % text.length;
+            }
+        }
+        setTimeout(type, 100);
+    }
+
+    type();
+</script>
 
 </body>
 </html>
